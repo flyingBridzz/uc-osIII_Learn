@@ -1,0 +1,8 @@
+#ifndef _OS_TYPE_H_
+#define _OS_TYPE_H_
+
+#include "cpu.h"
+
+#define  OS_STATE  CPU_INT08U
+
+#endif /* _OS_TYPE_H_ */

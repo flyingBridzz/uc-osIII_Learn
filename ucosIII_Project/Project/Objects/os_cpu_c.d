@@ -1,0 +1,14 @@
+.\objects\os_cpu_c.o: ..\User\uCOS-III\Ports\os_cpu_c.c
+.\objects\os_cpu_c.o: ..\User\uCOS-III\Source\os.h
+.\objects\os_cpu_c.o: ..\User\uC-CPU\cpu.h
+.\objects\os_cpu_c.o: ..\User\uCOS-III\Source\os_cfg.h
+.\objects\os_cpu_c.o: ..\User\uCOS-III\Source\os_type.h
+.\objects\os_cpu_c.o: ..\User\uCOS-III\Ports\os_cpu.h
+.\objects\os_cpu_c.o: D:\keil5\ARM\PACK\ARM\CMSIS\5.3.0\Device\ARM\ARMCM4\Include\ARMCM4.h
+.\objects\os_cpu_c.o: D:\keil5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\core_cm4.h
+.\objects\os_cpu_c.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\os_cpu_c.o: D:\keil5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_version.h
+.\objects\os_cpu_c.o: D:\keil5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h
+.\objects\os_cpu_c.o: D:\keil5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h
+.\objects\os_cpu_c.o: D:\keil5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\mpu_armv7.h
+.\objects\os_cpu_c.o: D:\keil5\ARM\PACK\ARM\CMSIS\5.3.0\Device\ARM\ARMCM4\Include\system_ARMCM4.h
