@@ -2,6 +2,7 @@
 #define _OS_H_
 
 #include "cpu.h"
+#include "cpu_core.h"
 #include "os_cfg.h"
 #include "os_type.h"
 #include "os_cpu.h"
@@ -11,6 +12,8 @@
 #else
 #define   OS_EXT    extern
 #endif   /* OS_GLOBALS */
+
+#define  OS_PRIO_TBL_SIZE    ((OS_CFG_PRIO_MAX - 1u)/(DEF_INT_CPU_NBR_BITS) + 1u)
 
 /******************系统状态的宏定义*****************/
 #define    OS_STATE_OS_STOPPED    (OS_STATE)(0u)
@@ -257,6 +260,8 @@ OS_EXT  OS_IDLE_CTR  OSIdleTaskCtr; //空闲任务计数变量
 extern CPU_STK  *const  OSCfg_IdleTaskStkBasePtr;
 /* 空闲任务堆栈大小 */
 extern CPU_STK_SIZE  const  OSCfg_IdleTaskStkSize;
+/* 优先级表声明 */
+extern CPU_DATA  OSPrioTbl[OS_PRIO_TBL_SIZE];
 /*****************全局变量声明end*******************/
 
 /********************函数声明***********************/
@@ -281,6 +286,10 @@ void OSSched(void);
 void OS_IdleTaskInit(OS_ERR *p_err);
 void OS_IdleTask(void *p_arg);
 void OSTimeDly(OS_TICK dly);
+									 
+void OS_PrioInsert(OS_PRIO prio);
+void OS_PrioRemove(OS_PRIO prio);
+OS_PRIO OS_PrioGetHighest(void);
 /*******************函数声明end*********************/
 									 
 #endif /* _OS_H_ */

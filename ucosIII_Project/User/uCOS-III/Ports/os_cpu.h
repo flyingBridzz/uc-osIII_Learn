@@ -15,6 +15,22 @@
 #define  OS_TASK_SW()     NVIC_INT_CTRL = NVIC_PENDSVSET
 /* 触发PendSV异常 */
 #define  OSIntCtxSw()     NVIC_INT_CTRL = NVIC_PENDSVSET
+
+/*
+**********************************************************
+*                       时间戳配置
+**********************************************************
+*/
+/* 使能时间戳，在os_cfg.h 头文件中使用 */
+#define  OS_CFG_TS_EN    				1u
+
+#if      OS_CFG_TS_EN == 1u
+#define  OS_TS_GET()						(CPU_TS)CPU_TS_TmrRd()
+#else
+#define  OS_TS_GET()            (CPU_TS)0u
+#endif
+
+
 /***********************宏定义end*************************/
 
 

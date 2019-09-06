@@ -1,6 +1,10 @@
 .\objects\app.o: ..\User\app.c
 .\objects\app.o: ..\User\uCOS-III\Source\os.h
 .\objects\app.o: ..\User\uC-CPU\cpu.h
+.\objects\app.o: ..\User\uC-CPU\cpu_def.h
+.\objects\app.o: ..\User\uC-CPU\cpu_core.h
+.\objects\app.o: ..\User\uC-LIB\lib_def.h
+.\objects\app.o: ..\User\uC-CPU\cpu_cfg.h
 .\objects\app.o: ..\User\uCOS-III\Source\os_cfg.h
 .\objects\app.o: ..\User\uCOS-III\Source\os_type.h
 .\objects\app.o: ..\User\uCOS-III\Ports\os_cpu.h

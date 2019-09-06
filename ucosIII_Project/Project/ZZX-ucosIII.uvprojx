@@ -436,6 +436,11 @@
               <FileType>5</FileType>
               <FilePath>..\User\uCOS-III\Source\os_cfg_app.h</FilePath>
             </File>
+            <File>
+              <FileName>os_prio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\uCOS-III\Source\os_prio.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -471,10 +476,32 @@
               <FileType>2</FileType>
               <FilePath>..\User\uC-CPU\cpu_a.asm</FilePath>
             </File>
+            <File>
+              <FileName>cpu_cfg.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\User\uC-CPU\cpu_cfg.h</FilePath>
+            </File>
+            <File>
+              <FileName>cpu_core.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\uC-CPU\cpu_core.c</FilePath>
+            </File>
+            <File>
+              <FileName>cpu_core.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\User\uC-CPU\cpu_core.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>uC/LIB</GroupName>
+          <Files>
+            <File>
+              <FileName>lib_def.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\User\uC-LIB\lib_def.h</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>Doc</GroupName>

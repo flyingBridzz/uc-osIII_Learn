@@ -4,25 +4,72 @@
 ARM Macro Assembler    Page 1 
 
 
-    1 00000000                 EXPORT           CPU_IntDis
-    2 00000000                 EXPORT           CPU_IntEn
-    3 00000000         
-    4 00000000                 AREA             |.text|, CODE, READONLY, ALIGN=
+    1 00000000         ;*************************************************
+    2 00000000         ;                 PUBLIC FUNCTIONS
+    3 00000000         ;*************************************************
+    4 00000000                 EXPORT           CPU_IntDis
+    5 00000000                 EXPORT           CPU_IntEn
+    6 00000000         
+    7 00000000                 EXPORT           CPU_SR_Save
+    8 00000000                 EXPORT           CPU_SR_Restore
+    9 00000000         
+   10 00000000                 EXPORT           CPU_CntLeadZeros
+   11 00000000                 EXPORT           CPU_CntTrailZeros
+   12 00000000         
+   13 00000000         ;***********************end***********************
+   14 00000000         
+   15 00000000                 AREA             |.text|, CODE, READONLY, ALIGN=
 2
-    5 00000000                 THUMB
-    6 00000000                 REQUIRE8
-    7 00000000                 PRESERVE8
-    8 00000000         
-    9 00000000         CPU_IntDis
-   10 00000000 B672            CPSID            I
-   11 00000002 4770            BX               LR
-   12 00000004         
-   13 00000004         CPU_IntEn
-   14 00000004 B662            CPSIE            I
-   15 00000006 4770            BX               LR
-   16 00000008         
-   17 00000008         
-   18 00000008                 END
+   16 00000000                 THUMB
+   17 00000000                 REQUIRE8
+   18 00000000                 PRESERVE8
+   19 00000000         
+   20 00000000         CPU_IntDis
+   21 00000000 B672            CPSID            I
+   22 00000002 4770            BX               LR
+   23 00000004         
+   24 00000004         CPU_IntEn
+   25 00000004 B662            CPSIE            I
+   26 00000006 4770            BX               LR
+   27 00000008         
+   28 00000008         
+   29 00000008         
+   30 00000008         CPU_SR_Save                          ;关中断
+   31 00000008 F3EF 8010       MRS              R0, PRIMASK
+   32 0000000C B672            CPSID            I
+   33 0000000E 4770            BX               LR
+   34 00000010         
+   35 00000010         CPU_SR_Restore                       ;开中断
+   36 00000010 F380 8810       MSR              PRIMASK, R0
+   37 00000014 4770            BX               LR
+   38 00000016         
+   39 00000016         
+   40 00000016         ;****************************************************
+   41 00000016         ;                    计算前导0函数
+   42 00000016         ; 函数声明：CPU_DATA CPU_CntLeadZeros(CPU_DATA val);
+   43 00000016         ;
+   44 00000016         ;****************************************************
+   45 00000016         CPU_CntLeadZeros
+   46 00000016 FAB0 F080       CLZ              R0, R0      ;计算前导0个数
+   47 0000001A 4770            BX               LR
+   48 0000001C         
+   49 0000001C         ;****************************************************
+   50 0000001C         ;                    计算后导0函数
+   51 0000001C         ; 函数声明：CPU_DATA CPU_CntTrailZeros(CPU_DATA val);
+   52 0000001C         ;
+   53 0000001C         ;****************************************************
+   54 0000001C         CPU_CntTrailZeros
+   55 0000001C FA90 F0A0       RBIT             R0, R0
+   56 00000020 FAB0 F080       CLZ              R0, R0
+   57 00000024 4770            BX               LR
+   58 00000026         
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+   59 00000026                 END
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4 --apcs=interw
 ork --depend=.\objects\cpu_a.d -o.\objects\cpu_a.o -I.\RTE\_Target_1 -ID:\keil5
 \ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include -ID:\keil5\ARM\PACK\ARM\CMSIS\5.3.0\Dev
@@ -39,25 +86,57 @@ Relocatable symbols
 
 Symbol: .text
    Definitions
-      At line 4 in file ..\User\uC-CPU\cpu_a.asm
+      At line 15 in file ..\User\uC-CPU\cpu_a.asm
    Uses
       None
 Comment: .text unused
+CPU_CntLeadZeros 00000016
+
+Symbol: CPU_CntLeadZeros
+   Definitions
+      At line 45 in file ..\User\uC-CPU\cpu_a.asm
+   Uses
+      At line 10 in file ..\User\uC-CPU\cpu_a.asm
+Comment: CPU_CntLeadZeros used once
+CPU_CntTrailZeros 0000001C
+
+Symbol: CPU_CntTrailZeros
+   Definitions
+      At line 54 in file ..\User\uC-CPU\cpu_a.asm
+   Uses
+      At line 11 in file ..\User\uC-CPU\cpu_a.asm
+Comment: CPU_CntTrailZeros used once
 CPU_IntDis 00000000
 
 Symbol: CPU_IntDis
    Definitions
-      At line 9 in file ..\User\uC-CPU\cpu_a.asm
+      At line 20 in file ..\User\uC-CPU\cpu_a.asm
    Uses
-      At line 1 in file ..\User\uC-CPU\cpu_a.asm
+      At line 4 in file ..\User\uC-CPU\cpu_a.asm
 Comment: CPU_IntDis used once
 CPU_IntEn 00000004
 
 Symbol: CPU_IntEn
    Definitions
-      At line 13 in file ..\User\uC-CPU\cpu_a.asm
+      At line 24 in file ..\User\uC-CPU\cpu_a.asm
    Uses
-      At line 2 in file ..\User\uC-CPU\cpu_a.asm
+      At line 5 in file ..\User\uC-CPU\cpu_a.asm
 Comment: CPU_IntEn used once
-3 symbols
-336 symbols in table
+CPU_SR_Restore 00000010
+
+Symbol: CPU_SR_Restore
+   Definitions
+      At line 35 in file ..\User\uC-CPU\cpu_a.asm
+   Uses
+      At line 8 in file ..\User\uC-CPU\cpu_a.asm
+Comment: CPU_SR_Restore used once
+CPU_SR_Save 00000008
+
+Symbol: CPU_SR_Save
+   Definitions
+      At line 30 in file ..\User\uC-CPU\cpu_a.asm
+   Uses
+      At line 7 in file ..\User\uC-CPU\cpu_a.asm
+Comment: CPU_SR_Save used once
+7 symbols
+340 symbols in table

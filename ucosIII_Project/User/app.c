@@ -16,6 +16,10 @@ static		 OS_TCB     Task2TCB;
 unsigned int flag1;
 unsigned int flag2;
 
+uint32_t TimeStart;						/* 定义三个全局变量 */
+uint32_t TimeEnd;
+uint32_t TimeUse;
+
 
 void delay(unsigned int tim)
 {
@@ -27,7 +31,12 @@ void Task1(void *p_arg)
 {
     while(1){
 		    flag1 = 1;
+			
+				//TimeStart = OS_TS_GET();
 				OSTimeDly(5);
+				//TimeEnd = OS_TS_GET();
+				//TimeUse = TimeEnd - TimeStart;
+				
 				flag1 = 0;
 				OSTimeDly(5);
 			
@@ -52,6 +61,9 @@ void Task2(void *p_arg)
 int main()
 {
     OS_ERR err;
+		
+		/* 初始化时间戳 */
+		CPU_Init();
 	
 		/* 关闭中断 */
 		CPU_IntDis();
