@@ -3,6 +3,17 @@
 /* 定义优先级表 */
 CPU_DATA  OSPrioTbl[OS_PRIO_TBL_SIZE];
 
+/*优先级初始化*/
+void OS_PrioInit(void)
+{
+	CPU_DATA i;
+	
+	/* 默认全部初始化为0 */
+	for(i=0u;i<OS_PRIO_TBL_SIZE;i++)
+	{
+		  OSPrioTbl[i] = (CPU_DATA)0;
+	}
+}
 
 /* 置位优先级表中相应的位 */
 void OS_PrioInsert(OS_PRIO prio)

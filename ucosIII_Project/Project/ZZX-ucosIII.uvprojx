@@ -441,6 +441,11 @@
               <FileType>1</FileType>
               <FilePath>..\User\uCOS-III\Source\os_prio.c</FilePath>
             </File>
+            <File>
+              <FileName>os_tick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\uCOS-III\Source\os_tick.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -490,6 +495,11 @@
               <FileName>cpu_core.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\User\uC-CPU\cpu_core.h</FilePath>
+            </File>
+            <File>
+              <FileName>cpu_def.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\User\uC-CPU\cpu_def.h</FilePath>
             </File>
           </Files>
         </Group>

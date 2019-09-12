@@ -13,7 +13,25 @@
 #define   OS_EXT    extern
 #endif   /* OS_GLOBALS */
 
+OS_EXT    OS_PRIO  OSPrioCur;        /* 当前优先级 */
+OS_EXT    OS_PRIO  OSPrioHighRdy;    /* 最高优先级 */
+
 #define  OS_PRIO_TBL_SIZE    ((OS_CFG_PRIO_MAX - 1u)/(DEF_INT_CPU_NBR_BITS) + 1u)
+
+#define  OS_PRIO_INIT        (OS_PRIO)(OS_CFG_PRIO_MAX)
+
+/*
+*****************************************************
+*                    临界段处理
+*****************************************************
+*/
+#define  OS_CRITICAL_ENTER()                      CPU_CRITICAL_ENTER()
+
+#define  OS_CRITICAL_ENTER_CPU_CRITICAL_EXIT() 
+
+#define  OS_CRITICAL_EXIT()                       CPU_CRITICAL_EXIT()
+
+#define  OS_CRITICAL_EXIT_NO_SCHED()              CPU_CRITICAL_EXIT()
 
 /******************系统状态的宏定义*****************/
 #define    OS_STATE_OS_STOPPED    (OS_STATE)(0u)
@@ -23,6 +41,8 @@
 /*******************typedef定义*********************/
 typedef    void(*OS_TASK_PTR)(void *P_arg);
 
+typedef  struct  os_tick_spoke       OS_TICK_SPOKE;
+
 typedef    struct os_tcb    OS_TCB;
 struct os_tcb{
 		CPU_STK       *StkPtr;
@@ -30,12 +50,37 @@ struct os_tcb{
 	  
 	  /* 任务延时周期个数 */
 	  OS_TICK       TaskDelayTicks;
+	
+	  /* 任务优先级 */
+	  OS_PRIO       Prio;
+	
+	  /* 就绪列表双向链表的下一个指针 */
+	  OS_TCB        *NextPtr;
+	  /* 就绪列表双向链表的前一个指针 */
+	  OS_TCB        *PrevPtr;
+	
+	  /* 时基列表相关字段 */
+	  OS_TCB        *TickNextPtr;
+	  OS_TCB        *TickPrevPtr;
+	  OS_TICK_SPOKE *TickSpokePtr;
+	  
+	  OS_TICK       TickCtrMatch;
+	  OS_TICK       TickRemain;
 };
+
 
 typedef    struct os_rdy_list  OS_RDY_LIST;
 struct os_rdy_list{
-    OS_TCB  *HeadPtr;
-	  OS_TCB  *TailPtr;
+    OS_TCB          *HeadPtr;
+	  OS_TCB          *TailPtr;
+	  OS_OBJ_QTY      NbrEntries;
+};
+
+
+struct  os_tick_spoke{
+    OS_TCB        *FirstPtr;
+	  OS_OBJ_QTY     NbrEntries;
+	  OS_OBJ_QTY     NbrEntriesMax;
 };
 
 typedef    enum os_err {
@@ -253,6 +298,7 @@ OS_EXT  OS_TCB       *OSTCBHighRdyPtr;
 OS_EXT  OS_STATE     OSRunning;
 OS_EXT  OS_TCB       OSIdleTaskTCB; //空闲任务TCB
 OS_EXT  OS_IDLE_CTR  OSIdleTaskCtr; //空闲任务计数变量
+OS_EXT  OS_TICK      OSTickCtr;     //Tick 计数器
 /****************全局变量定义end********************/
 
 /******************全局变量声明*********************/
@@ -262,6 +308,10 @@ extern CPU_STK  *const  OSCfg_IdleTaskStkBasePtr;
 extern CPU_STK_SIZE  const  OSCfg_IdleTaskStkSize;
 /* 优先级表声明 */
 extern CPU_DATA  OSPrioTbl[OS_PRIO_TBL_SIZE];
+/* 时基列表 */
+extern OS_TICK_SPOKE  OSCfg_TickWheel[];
+/* 时基列表大小 */
+extern OS_OBJ_QTY  const  OSCfg_TickWheelSize;
 /*****************全局变量声明end*******************/
 
 /********************函数声明***********************/
@@ -273,6 +323,7 @@ CPU_STK *OSTaskStkInit (OS_TASK_PTR   p_task, \
 void OSTaskCreate (OS_TCB        *p_tcb, \
 									 OS_TASK_PTR    p_task, \
 									 void          *p_arg, \
+									 OS_PRIO       prio, \
 									 CPU_STK       *p_stk_base, \
 									 CPU_STK_SIZE  	stk_size, \
 									 OS_ERR        *p_err);
@@ -287,9 +338,26 @@ void OS_IdleTaskInit(OS_ERR *p_err);
 void OS_IdleTask(void *p_arg);
 void OSTimeDly(OS_TICK dly);
 									 
+/* ------------- 就绪列表管理 ------------ */
+void OS_RdyListInit            (void);
+void OS_RdyListInsert          (OS_TCB       *p_tcb);
+void OS_RdyListInsertHead      (OS_TCB       *p_tcb);
+void OS_RdyListInsertTail      (OS_TCB       *p_tcb);
+void OS_RdyListMoveHeadToTail  (OS_RDY_LIST  *p_rdy_list);
+void OS_RdyListRemove          (OS_TCB       *p_tcb);
+					
+/* -------------- 优先级管理 ------------- */
+void OS_PrioInit(void);
 void OS_PrioInsert(OS_PRIO prio);
 void OS_PrioRemove(OS_PRIO prio);
 OS_PRIO OS_PrioGetHighest(void);
+
+/* ------------- 时基列表管理 ------------ */
+void OS_TickListInit(void);
+void OS_TickListInsert(OS_TCB *p_tcb, OS_TICK time);
+void OS_TickListRemove(OS_TCB *p_tcb);
+void OS_TaskRdy(OS_TCB *p_tcb);
+void OS_TickListUpdate(void);
 /*******************函数声明end*********************/
 									 
 #endif /* _OS_H_ */

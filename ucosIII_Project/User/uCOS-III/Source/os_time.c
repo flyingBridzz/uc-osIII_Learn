@@ -2,27 +2,60 @@
 
 void OSTimeTick(void)
 {
+#if 0
 	  unsigned int i;
+	  CPU_SR_ALLOC();
+	
+	  /* 进入临界段 */
+	  OS_CRITICAL_ENTER();
 	
 	  /* 扫描就绪列表中所有任务的 TaskDelayTicks，如果不为0，则减1 */
-	  for(i=0; i<OS_CFG_PRIO_MAX; i++)
-		{
-				if(OSRdyList[i].HeadPtr->TaskDelayTicks > 0)
-				{
-					OSRdyList[i].HeadPtr->TaskDelayTicks--;
+	  for(i=0; i<OS_CFG_PRIO_MAX; i++){
+		    if(OSRdyList[i].HeadPtr->TaskDelayTicks > 0){
+				    OSRdyList[i].HeadPtr->TaskDelayTicks--;
+					  if(OSRdyList[i].HeadPtr->TaskDelayTicks == 0){
+						    /* 为0则表示延时时间到，让任务就绪 */
+							  OS_PrioInsert(i);
+						}
 				}
 		}
+		
+		/* 退出临界段 */
+		OS_CRITICAL_EXIT();
 	
+#endif
+    
+		/* 更新时基列表 */
+		OS_TickListUpdate();
+		
 	  /* 任务调度 */
 	  OSSched();
 }
 
 /* 阻塞延时 */
 void OSTimeDly(OS_TICK dly)
-{
-	  /* 设置延时时间 */
+{  
+	  CPU_SR_ALLOC();
+	
+	  /* 进入临界段 */
+	  OS_CRITICAL_ENTER();
+#if 0	   
+	  /*设置延时时间*/
 	  OSTCBCurPtr->TaskDelayTicks = dly;
 	
-	  /* 进行任务调度 */
-	  OSSched();
+	  /* 从就绪列表中移除 */
+	  OS_PrioRemove(OSTCBCurPtr->Prio);
+#endif
+    
+    /* 插入到时基列表 */
+    OS_TickListInsert(OSTCBCurPtr, dly);
+	
+	  /* 从就绪列表移除 */
+	  OS_RdyListRemove(OSTCBCurPtr);
+    	
+	  /* 退出临界段 */
+	  OS_CRITICAL_EXIT();
+	
+	  /*任务调度*/
+		OSSched();
 }

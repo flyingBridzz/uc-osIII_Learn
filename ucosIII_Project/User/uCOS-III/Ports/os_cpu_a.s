@@ -3,6 +3,9 @@
 ;***********************************************************
     IMPORT    OSTCBCurPtr         ;外部文件引入的参考
     IMPORT    OSTCBHighRdyPtr
+		
+    IMPORT    OSPrioCur
+	IMPORT    OSPrioHighRdy
 	
     EXPORT    OSStartHighRdy      ;该文件定义的函数
     EXPORT    PendSV_Handler
@@ -80,6 +83,13 @@ PendSV_Handler
 ;-----------------------------------------------------------
 OS_CPU_PendSVHandler_nosave
 
+;OSPrioCur = OSPrioHighRdy
+  LDR  R0, = OSPrioCur
+  LDR  R1, = OSPrioHighRdy
+  LDRB R2, [R1]
+  STRB R2, [R0]
+
+;OSTCBCurPtr = OSTCBHighRdyPtr
 ;加载 OSTCBCurPtr 指针的地址到R0，这里LDR属于伪指令
   LDR      R0, = OSTCBCurPtr
 ;加载 OSTCBHighRdyPtr 指针的地址到R1，这里LDR属于伪指令
@@ -110,5 +120,5 @@ OS_CPU_PendSVHandler_nosave
   
   NOP   ;为了汇编指令对齐，不会有警告
   
-  END   ;汇编文件结束
+  ENDP   ;汇编文件结束
   
