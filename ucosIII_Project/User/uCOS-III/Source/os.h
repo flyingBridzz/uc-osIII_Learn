@@ -66,6 +66,10 @@ struct os_tcb{
 	  
 	  OS_TICK       TickCtrMatch;
 	  OS_TICK       TickRemain;
+		
+		/* 时间片相关字段 */
+		OS_TICK       TimeQuanta;
+		OS_TICK       TimeQuantaCtr;
 };
 
 
