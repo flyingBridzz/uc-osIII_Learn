@@ -334,6 +334,7 @@ void OS_IdleTaskInit(OS_ERR *p_err)
 								 (OS_PRIO)(OS_CFG_PRIO_MAX - 1u), \
 								 (CPU_STK    *)OSCfg_IdleTaskStkBasePtr, \
 								 (CPU_STK_SIZE)OSCfg_IdleTaskStkSize, \
+								 (OS_TICK     )0,
 								 (OS_ERR     *)p_err );
 }
 

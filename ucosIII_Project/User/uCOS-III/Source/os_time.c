@@ -1,32 +1,14 @@
 #include "os.h"
 
 void OSTimeTick(void)
-{
-#if 0
-	  unsigned int i;
-	  CPU_SR_ALLOC();
-	
-	  /* 进入临界段 */
-	  OS_CRITICAL_ENTER();
-	
-	  /* 扫描就绪列表中所有任务的 TaskDelayTicks，如果不为0，则减1 */
-	  for(i=0; i<OS_CFG_PRIO_MAX; i++){
-		    if(OSRdyList[i].HeadPtr->TaskDelayTicks > 0){
-				    OSRdyList[i].HeadPtr->TaskDelayTicks--;
-					  if(OSRdyList[i].HeadPtr->TaskDelayTicks == 0){
-						    /* 为0则表示延时时间到，让任务就绪 */
-							  OS_PrioInsert(i);
-						}
-				}
-		}
-		
-		/* 退出临界段 */
-		OS_CRITICAL_EXIT();
-	
-#endif
-    
+{   
 		/* 更新时基列表 */
 		OS_TickListUpdate();
+	
+#if OS_CFG_SCHED_ROUND_ROBIN_EN > 0u
+	  /* 时间片调度 */
+	 OS_SchedRoundRobin(&OSRdyList[OSPrioCur]);
+#endif
 		
 	  /* 任务调度 */
 	  OSSched();
