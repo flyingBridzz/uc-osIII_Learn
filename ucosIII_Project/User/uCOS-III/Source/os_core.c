@@ -250,56 +250,6 @@ void OSInit(OS_ERR *p_err)
 /*任务切换，实际就是触发 PendSV 异常，然后再PendSV异常中进行上下文切换 */
 void OSSched(void)
 {
-#if 0
-	  if(OSTCBCurPtr == OSRdyList[0].HeadPtr){
-		    OSTCBHighRdyPtr = OSRdyList[1].HeadPtr;
-		}else{
-		    OSTCBHighRdyPtr = OSRdyList[0].HeadPtr;
-		}
-#endif
-
-#if 0	
-	  /* 如果当前任务是空闲任务，那么就去尝试执行任务1或者任务2，
-       看看他们的延时时间是否结束，如果任务的延时时间均没有到期，
-       那就返回继续执行空闲任务	*/
-	  if(OSTCBCurPtr == &OSIdleTaskTCB){
-		    if(OSRdyList[0].HeadPtr->TaskDelayTicks == 0){
-				    OSTCBHighRdyPtr = OSRdyList[0].HeadPtr;
-				}else if(OSRdyList[1].HeadPtr->TaskDelayTicks == 0){
-				    OSTCBHighRdyPtr = OSRdyList[1].HeadPtr;
-				}else{
-				    /* 任务延时均没有到期则返回，继续执行空闲任务 */
-					  return;
-				}
-		}else{
-		    /*如果是 task1 或者 task2 的话，检查下另外一个任务，
-			    如果另外的任务不在延时中，就切换到该任务
-			    否则，判断下当前任务是否应该进入延时状态，
-			    如果是的话，就切换到空闲任务，否则就不进行任何切换 */
-		    if(OSTCBCurPtr == OSRdyList[0].HeadPtr){
-				    if(OSRdyList[1].HeadPtr->TaskDelayTicks == 0){
-						    OSTCBHighRdyPtr = OSRdyList[1].HeadPtr;
-						}else if(OSTCBCurPtr->TaskDelayTicks != 0){
-						    OSTCBHighRdyPtr = &OSIdleTaskTCB;
-						}else{
-						    /* 返回原任务 */
-							  return;
-						}
-				}else if(OSTCBCurPtr == OSRdyList[1].HeadPtr){
-				    if(OSRdyList[0].HeadPtr->TaskDelayTicks == 0){
-						    OSTCBHighRdyPtr = OSRdyList[0].HeadPtr;
-						}else if(OSTCBCurPtr->TaskDelayTicks != 0){
-						    OSTCBHighRdyPtr = &OSIdleTaskTCB;
-						}else{
-						    /* 返回原任务 */
-							  return;
-						}
-				}
-		}
-		/*切换任务*/
-		OS_TASK_SW();
-#endif
-
     CPU_SR_ALLOC();
 		
 		/*进入临界段*/

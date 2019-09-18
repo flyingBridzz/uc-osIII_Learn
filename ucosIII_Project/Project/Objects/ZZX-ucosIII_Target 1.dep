@@ -6,7 +6,7 @@ I (..\User\uC-CPU\cpu_def.h)(0x5D78AE84)
 I (..\User\uC-CPU\cpu_core.h)(0x5D709B93)
 I (..\User\uC-LIB\lib_def.h)(0x5D709B93)
 I (..\User\uC-CPU\cpu_cfg.h)(0x5D70B283)
-I (..\User\uCOS-III\Source\os_cfg.h)(0x5D808D18)
+I (..\User\uCOS-III\Source\os_cfg.h)(0x5D819B15)
 I (..\User\uCOS-III\Source\os_type.h)(0x5D808D75)
 I (..\User\uCOS-III\Ports\os_cpu.h)(0x5D709B7A)
 I (D:\keil5\ARM\PACK\ARM\CMSIS\5.3.0\Device\ARM\ARMCM4\Include\ARMCM4.h)(0x5A8E1FE2)
@@ -17,14 +17,14 @@ I (D:\keil5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_compiler.h)(0x5A8E1FE2)
 I (D:\keil5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\cmsis_armcc.h)(0x5A8E1FE2)
 I (D:\keil5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include\mpu_armv7.h)(0x5A8E1FE2)
 I (D:\keil5\ARM\PACK\ARM\CMSIS\5.3.0\Device\ARM\ARMCM4\Include\system_ARMCM4.h)(0x5A8E1FE2)
-F (..\User\uCOS-III\Source\os_task.c)(0x5D80A189)(--c99 --gnu -c --cpu Cortex-M4 --li -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\User\uC-CPU -I ..\User\uC-LIB -I ..\User\uCOS-III\Ports -I ..\User\uCOS-III\Source-I.\RTE\_Target_1-ID:\keil5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-ID:\keil5\ARM\PACK\ARM\CMSIS\5.3.0\Device\ARM\ARMCM4\Include-D__UVISION_VERSION="525" -D_RTE_ -DARMCM4-o .\objects\os_task.o --omf_browse .\objects\os_task.crf --depend .\objects\os_task.d)
+F (..\User\uCOS-III\Source\os_task.c)(0x5D81A2F3)(--c99 --gnu -c --cpu Cortex-M4 --li -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\User\uC-CPU -I ..\User\uC-LIB -I ..\User\uCOS-III\Ports -I ..\User\uCOS-III\Source-I.\RTE\_Target_1-ID:\keil5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-ID:\keil5\ARM\PACK\ARM\CMSIS\5.3.0\Device\ARM\ARMCM4\Include-D__UVISION_VERSION="525" -D_RTE_ -DARMCM4-o .\objects\os_task.o --omf_browse .\objects\os_task.crf --depend .\objects\os_task.d)
 I (..\User\uCOS-III\Source\os.h)(0x5D80A189)
 I (..\User\uC-CPU\cpu.h)(0x5D79EBB4)
 I (..\User\uC-CPU\cpu_def.h)(0x5D78AE84)
 I (..\User\uC-CPU\cpu_core.h)(0x5D709B93)
 I (..\User\uC-LIB\lib_def.h)(0x5D709B93)
 I (..\User\uC-CPU\cpu_cfg.h)(0x5D70B283)
-I (..\User\uCOS-III\Source\os_cfg.h)(0x5D808D18)
+I (..\User\uCOS-III\Source\os_cfg.h)(0x5D819B15)
 I (..\User\uCOS-III\Source\os_type.h)(0x5D808D75)
 I (..\User\uCOS-III\Ports\os_cpu.h)(0x5D709B7A)
 F (..\User\uCOS-III\Source\os_var.c)(0x5D67697C)(--c99 --gnu -c --cpu Cortex-M4 --li -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\User\uC-CPU -I ..\User\uC-LIB -I ..\User\uCOS-III\Ports -I ..\User\uCOS-III\Source-I.\RTE\_Target_1-ID:\keil5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-ID:\keil5\ARM\PACK\ARM\CMSIS\5.3.0\Device\ARM\ARMCM4\Include-D__UVISION_VERSION="525" -D_RTE_ -DARMCM4-o .\objects\os_var.o --omf_browse .\objects\os_var.crf --depend .\objects\os_var.d)
@@ -34,17 +34,17 @@ I (..\User\uC-CPU\cpu_def.h)(0x5D78AE84)
 I (..\User\uC-CPU\cpu_core.h)(0x5D709B93)
 I (..\User\uC-LIB\lib_def.h)(0x5D709B93)
 I (..\User\uC-CPU\cpu_cfg.h)(0x5D70B283)
-I (..\User\uCOS-III\Source\os_cfg.h)(0x5D808D18)
+I (..\User\uCOS-III\Source\os_cfg.h)(0x5D819B15)
 I (..\User\uCOS-III\Source\os_type.h)(0x5D808D75)
 I (..\User\uCOS-III\Ports\os_cpu.h)(0x5D709B7A)
-F (..\User\uCOS-III\Source\os_core.c)(0x5D7F3D25)(--c99 --gnu -c --cpu Cortex-M4 --li -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\User\uC-CPU -I ..\User\uC-LIB -I ..\User\uCOS-III\Ports -I ..\User\uCOS-III\Source-I.\RTE\_Target_1-ID:\keil5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-ID:\keil5\ARM\PACK\ARM\CMSIS\5.3.0\Device\ARM\ARMCM4\Include-D__UVISION_VERSION="525" -D_RTE_ -DARMCM4-o .\objects\os_core.o --omf_browse .\objects\os_core.crf --depend .\objects\os_core.d)
+F (..\User\uCOS-III\Source\os_core.c)(0x5D8191ED)(--c99 --gnu -c --cpu Cortex-M4 --li -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\User\uC-CPU -I ..\User\uC-LIB -I ..\User\uCOS-III\Ports -I ..\User\uCOS-III\Source-I.\RTE\_Target_1-ID:\keil5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-ID:\keil5\ARM\PACK\ARM\CMSIS\5.3.0\Device\ARM\ARMCM4\Include-D__UVISION_VERSION="525" -D_RTE_ -DARMCM4-o .\objects\os_core.o --omf_browse .\objects\os_core.crf --depend .\objects\os_core.d)
 I (..\User\uCOS-III\Source\os.h)(0x5D80A189)
 I (..\User\uC-CPU\cpu.h)(0x5D79EBB4)
 I (..\User\uC-CPU\cpu_def.h)(0x5D78AE84)
 I (..\User\uC-CPU\cpu_core.h)(0x5D709B93)
 I (..\User\uC-LIB\lib_def.h)(0x5D709B93)
 I (..\User\uC-CPU\cpu_cfg.h)(0x5D70B283)
-I (..\User\uCOS-III\Source\os_cfg.h)(0x5D808D18)
+I (..\User\uCOS-III\Source\os_cfg.h)(0x5D819B15)
 I (..\User\uCOS-III\Source\os_type.h)(0x5D808D75)
 I (..\User\uCOS-III\Ports\os_cpu.h)(0x5D709B7A)
 F (..\User\uCOS-III\Source\os_time.c)(0x5D7A0CDE)(--c99 --gnu -c --cpu Cortex-M4 --li -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\User\uC-CPU -I ..\User\uC-LIB -I ..\User\uCOS-III\Ports -I ..\User\uCOS-III\Source-I.\RTE\_Target_1-ID:\keil5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-ID:\keil5\ARM\PACK\ARM\CMSIS\5.3.0\Device\ARM\ARMCM4\Include-D__UVISION_VERSION="525" -D_RTE_ -DARMCM4-o .\objects\os_time.o --omf_browse .\objects\os_time.crf --depend .\objects\os_time.d)
@@ -54,11 +54,11 @@ I (..\User\uC-CPU\cpu_def.h)(0x5D78AE84)
 I (..\User\uC-CPU\cpu_core.h)(0x5D709B93)
 I (..\User\uC-LIB\lib_def.h)(0x5D709B93)
 I (..\User\uC-CPU\cpu_cfg.h)(0x5D70B283)
-I (..\User\uCOS-III\Source\os_cfg.h)(0x5D808D18)
+I (..\User\uCOS-III\Source\os_cfg.h)(0x5D819B15)
 I (..\User\uCOS-III\Source\os_type.h)(0x5D808D75)
 I (..\User\uCOS-III\Ports\os_cpu.h)(0x5D709B7A)
 F (..\User\uCOS-III\Source\os.h)(0x5D80A189)()
-F (..\User\uCOS-III\Source\os_cfg.h)(0x5D808D18)()
+F (..\User\uCOS-III\Source\os_cfg.h)(0x5D819B15)()
 F (..\User\uCOS-III\Source\os_type.h)(0x5D808D75)()
 F (..\User\uCOS-III\Source\os_cfg_app.c)(0x5D79B2AB)(--c99 --gnu -c --cpu Cortex-M4 --li -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\User\uC-CPU -I ..\User\uC-LIB -I ..\User\uCOS-III\Ports -I ..\User\uCOS-III\Source-I.\RTE\_Target_1-ID:\keil5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-ID:\keil5\ARM\PACK\ARM\CMSIS\5.3.0\Device\ARM\ARMCM4\Include-D__UVISION_VERSION="525" -D_RTE_ -DARMCM4-o .\objects\os_cfg_app.o --omf_browse .\objects\os_cfg_app.crf --depend .\objects\os_cfg_app.d)
 I (..\User\uCOS-III\Source\os.h)(0x5D80A189)
@@ -67,7 +67,7 @@ I (..\User\uC-CPU\cpu_def.h)(0x5D78AE84)
 I (..\User\uC-CPU\cpu_core.h)(0x5D709B93)
 I (..\User\uC-LIB\lib_def.h)(0x5D709B93)
 I (..\User\uC-CPU\cpu_cfg.h)(0x5D70B283)
-I (..\User\uCOS-III\Source\os_cfg.h)(0x5D808D18)
+I (..\User\uCOS-III\Source\os_cfg.h)(0x5D819B15)
 I (..\User\uCOS-III\Source\os_type.h)(0x5D808D75)
 I (..\User\uCOS-III\Ports\os_cpu.h)(0x5D709B7A)
 I (..\User\uCOS-III\Source\os_cfg_app.h)(0x5D79A49C)
@@ -79,7 +79,7 @@ I (..\User\uC-CPU\cpu_def.h)(0x5D78AE84)
 I (..\User\uC-CPU\cpu_core.h)(0x5D709B93)
 I (..\User\uC-LIB\lib_def.h)(0x5D709B93)
 I (..\User\uC-CPU\cpu_cfg.h)(0x5D70B283)
-I (..\User\uCOS-III\Source\os_cfg.h)(0x5D808D18)
+I (..\User\uCOS-III\Source\os_cfg.h)(0x5D819B15)
 I (..\User\uCOS-III\Source\os_type.h)(0x5D808D75)
 I (..\User\uCOS-III\Ports\os_cpu.h)(0x5D709B7A)
 F (..\User\uCOS-III\Source\os_tick.c)(0x5D79F339)(--c99 --gnu -c --cpu Cortex-M4 --li -g -O0 --apcs=interwork --split_sections -I ..\User -I ..\User\uC-CPU -I ..\User\uC-LIB -I ..\User\uCOS-III\Ports -I ..\User\uCOS-III\Source-I.\RTE\_Target_1-ID:\keil5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-ID:\keil5\ARM\PACK\ARM\CMSIS\5.3.0\Device\ARM\ARMCM4\Include-D__UVISION_VERSION="525" -D_RTE_ -DARMCM4-o .\objects\os_tick.o --omf_browse .\objects\os_tick.crf --depend .\objects\os_tick.d)
@@ -89,7 +89,7 @@ I (..\User\uC-CPU\cpu_def.h)(0x5D78AE84)
 I (..\User\uC-CPU\cpu_core.h)(0x5D709B93)
 I (..\User\uC-LIB\lib_def.h)(0x5D709B93)
 I (..\User\uC-CPU\cpu_cfg.h)(0x5D70B283)
-I (..\User\uCOS-III\Source\os_cfg.h)(0x5D808D18)
+I (..\User\uCOS-III\Source\os_cfg.h)(0x5D819B15)
 I (..\User\uCOS-III\Source\os_type.h)(0x5D808D75)
 I (..\User\uCOS-III\Ports\os_cpu.h)(0x5D709B7A)
 F (..\User\uCOS-III\Ports\os_cpu_a.s)(0x5D7997CD)(--cpu Cortex-M4 --li -g --apcs=interwork -I.\RTE\_Target_1-ID:\keil5\ARM\PACK\ARM\CMSIS\5.3.0\CMSIS\Include-ID:\keil5\ARM\PACK\ARM\CMSIS\5.3.0\Device\ARM\ARMCM4\Include--pd "__UVISION_VERSION SETA 525" --pd "_RTE_ SETA 1" --pd "ARMCM4 SETA 1"--list .\listings\os_cpu_a.lst --xref -o .\objects\os_cpu_a.o --depend .\objects\os_cpu_a.d)
@@ -100,7 +100,7 @@ I (..\User\uC-CPU\cpu_def.h)(0x5D78AE84)
 I (..\User\uC-CPU\cpu_core.h)(0x5D709B93)
 I (..\User\uC-LIB\lib_def.h)(0x5D709B93)
 I (..\User\uC-CPU\cpu_cfg.h)(0x5D70B283)
-I (..\User\uCOS-III\Source\os_cfg.h)(0x5D808D18)
+I (..\User\uCOS-III\Source\os_cfg.h)(0x5D819B15)
 I (..\User\uCOS-III\Source\os_type.h)(0x5D808D75)
 I (..\User\uCOS-III\Ports\os_cpu.h)(0x5D709B7A)
 I (D:\keil5\ARM\PACK\ARM\CMSIS\5.3.0\Device\ARM\ARMCM4\Include\ARMCM4.h)(0x5A8E1FE2)

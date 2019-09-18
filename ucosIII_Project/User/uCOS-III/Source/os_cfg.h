@@ -13,4 +13,7 @@
 /* 使能任务挂起功能 */
 #define OS_CFG_TASK_SUSPEND_EN          1u
 
+/* 使能任务删除功能 */
+#define OS_CFG_TASK_DEL_EN              1u
+
 #endif /* _OS_CFG_H_ */
